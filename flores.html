@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> FLORESCER | Flores Artesanais Premium</title>
+    <!-- Google Fonts: Playfair Display para elegância e Montserrat para leitura -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #BFE6FF;
+            --secondary-blue: #E3F4FF;
+            --white: #FFFFFF;
+            --text-dark: #2C3E50;
+            --text-light: #5D6D7E;
+            --accent: #89CFF0;
+            --shadow: 0 10px 30px rgba(191, 230, 255, 0.3);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* --- Menu Superior --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero Banner --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.8s;
+        }
+
+        /* --- Catálogo --- */
+        .section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--primary-blue);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--secondary-blue);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .product-image {
+            aspect-ratio: 1 / 1;
+            background: var(--secondary-blue); /* Placeholder para imagem */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* --- Sobre Nós --- */
+        .about {
+            background-color: #FAFDFF;
+            display: flex;
+            align-items: center;
+                justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 600px;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .about-image {
+            flex: 1;
+            max-width: 350px;
+            min-width: 250px;
+        }
+
+        /* --- Depoimentos --- */
+        .testimonials {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-item {
+            max-width: 350px;
+            padding: 30px;
+            font-style: italic;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        /* --- Botão WhatsApp --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 60px 10%;
+            background: var(--secondary-blue);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        /* --- Animações --- */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">FLORESCER</a>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#catalog">Catálogo</a></li>
+            <li><a href="#about">Nossa História</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Elegância em cada pétala.</h1>
+            <p>Flores artesanais premium feitas à mão com dedicação e sofisticação.</p>
+            <a href="#catalog" style="text-decoration: none; padding: 15px 40px; background: var(--accent); color: white; border-radius: 30px; font-weight: 600;">Ver Coleção</a>
+        </div>
+    </section>
+
+    <section id="catalog" class="section">
+        <div class="section-title">
+            <h2>Nosso Catálogo</h2>
+        </div>
+        
+        <!-- Categoria: Flores Únicas -->
+        <h3 style="margin-bottom: 30px; color: var(--accent); border-bottom: 1px solid var(--primary-blue); display: inline-block;">Flores Únicas</h3>
+        <div class="catalog-grid">
+            <a href="produto.html?id=rosa-eterna" class="product-card" style="text-decoration: none; color: inherit;">
+                <div class="product-image">
+                    <img src="flores/flor2.jpeg" alt="Peônia de Seda">
+                </div>
+                <div class="product-info">
+                    <h3>Rosa eterna</h3>
+                    <p>Arranjo delicado em tons pastéis, ideal para decoração clássica.</p>
+                    <div class="price">R$ 15,00</div>
+                </div>
+            </a>
+            <a href="produto.html?id=flor-eterna" class="product-card" style="text-decoration: none; color: inherit;">
+                <div class="product-image">
+                    <img src="flores/flor1.jpeg" alt="Lírio de Cristal">
+                </div>
+                <div class="product-info">
+                    <h3>Flor eterna</h3>
+                    <p>Minimalismo e luxo em uma peça única esculpida à mão.</p>
+                    <div class="price">R$ 20,00</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Categoria: Buquês -->
+        <h3 style="margin-bottom: 30px; color: var(--accent); border-bottom: 1px solid var(--primary-blue); display: inline-block;">Buquês Exclusivos</h3>
+        <div class="catalog-grid">
+            <a href="produto.html?id=serenata-algodao" class="product-card" style="text-decoration: none; color: inherit;">
+                <div class="product-image">
+                    <img src="flores/buque azul.jpeg" alt="Bouquet Nuvem">
+                </div>
+                <div class="product-info">
+                    <h3>Serenata de Algodão</h3>
+                    <p>Composição artesanal exclusiva com detalhes em azul bebê e branco.</p>
+                    <div class="price">R$ 55,00</div>
+                </div>
+            </a>
+            <a href="produto.html?id=buque-girassol" class="product-card" style="text-decoration: none; color: inherit;">
+                <div class="product-image">
+                    <img src="flores/Buque girassol.jpeg" alt="Buquê Silvestre">
+                </div>
+                <div class="product-info">
+                    <h3>Buquê de Girassol</h3>
+                    <p>Uma mistura vibrante e rústica de flores artesanais de campo.</p>
+                    <div class="price">R$ 30,00</div>
+                </div>
+            </a>    
+            <a href="produto.html?id=buque-eternity" class="product-card" style="text-decoration: none; color: inherit;">
+                <div class="product-image">
+                    <img src="flores/Buque roxo.jpeg" alt="Buquê de Luxo Eternity">
+                </div>
+                <div class="product-info">
+                    <h3>Buquê de Luxo 'Eternity'</h3>
+                    <p>O topo da nossa linha artesanal para momentos inesquecíveis.</p>
+                    <div class="price">R$50,00</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Botão para Catálogo Completo -->
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="catalogo.html" class="btn-full-catalog" style="text-decoration: none; padding: 15px 40px; border: 2px solid var(--accent); color: var(--accent); border-radius: 30px; font-weight: 600; transition: var(--transition);">
+                Ver Catálogo Completo
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="about-image">
+            <img src="flores/Florescer.png" alt="Logo Florescer" style="width: 100%;">
+        </div>
+        <div class="about-text">
+            <h2>Sobre a Florescer</h2>
+            <p style="margin-top: 20px; color: var(--text-light);">Nascemos da paixão por transformar materiais simples em obras de arte eternas. Cada arranjo é único, refletindo nossa busca incessante pela perfeição e delicadeza. Nosso processo é 100% manual, respeitando o tempo e a essência da beleza artesanal.</p>
+        </div>
+    </section>
+
+    <section class="section testimonials">
+        <div class="section-title">
+            <h2>O que dizem nossos clientes</h2>
+        </div>
+        <div class="testimonial-slider">
+            <div class="testimonial-item">
+                <p>"Buquê lindo demais, ótimo trabalho"</p>
+                <br><strong>-Lucas Pinheiro</strong>
+            </div>
+            <div class="testimonial-item">
+                <p>"Trabalho impecável e atendimento muito carinhoso. Recomendo de olhos fechados!"</p>
+                <br><strong>- Ana Clara</strong>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-col">
+            <a href="#" class="logo">FLORESCER</a>
+            <p style="margin-top: 15px; font-size: 0.9rem;">Sofisticação artesanal.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Redes Sociais</h4>
+            <ul>
+                <li>@Eeterno.Florescer</li>
+
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contato</h4>
+            <ul>
+                <li></li>
+                <li>(11) 99921-9306</li>
+                <li>Bragança Paulista, SP</li>
+            </ul>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/seunumeroaqui" class="whatsapp-float" target="_blank">
+        <i>W</i>
+    </a>
+
+    <script>
+        // Efeito Hover no botão de catálogo (via JS para manter o estilo dinâmico)
+        const btnCatalog = document.querySelector('.btn-full-catalog');
+        if(btnCatalog) {
+            btnCatalog.onmouseover = () => {
+                btnCatalog.style.background = 'var(--accent)';
+                btnCatalog.style.color = 'white';
+            };
+            btnCatalog.onmouseout = () => {
+                btnCatalog.style.background = 'transparent';
+                btnCatalog.style.color = 'var(--accent)';
+            };
+        }
+
+        // Efeito de scroll suave para links do menu
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Revelação de elementos ao rolar a página
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => {
+                const top = window.scrollY;
+                const offset = sec.offsetTop - 400;
+                if (top >= offset) {
+                    sec.style.opacity = "1";
+                    sec.style.transform = "translateY(0)";
+                    sec.style.transition = "1s ease";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

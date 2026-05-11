@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto | FLORESCER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #BFE6FF;
+            --secondary-blue: #E3F4FF;
+            --white: #FFFFFF;
+            --text-dark: #2C3E50;
+            --text-light: #5D6D7E;
+            --accent: #89CFF0;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text-dark); background-color: var(--white); line-height: 1.8; }
+        
+        nav {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; color: var(--accent); text-decoration: none; font-weight: bold; letter-spacing: 2px; }
+        .back-link { text-decoration: none; color: var(--text-light); font-size: 0.9rem; }
+
+        .container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .product-visual { flex: 1; min-width: 300px; }
+        .product-visual img { width: 100%; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        .product-details { flex: 1.2; min-width: 300px; }
+        .product-details h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; color: var(--text-dark); }
+        .product-price { font-size: 1.8rem; color: var(--accent); font-weight: 600; margin-bottom: 30px; }
+        .product-description { font-size: 1.1rem; color: var(--text-light); margin-bottom: 40px; }
+        
+        .buy-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .buy-button:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="flores.html" class="logo">FLORESCER</a>
+        <a href="javascript:history.back()" class="back-link">← Voltar</a>
+    </nav>
+
+    <main class="container" id="product-container">
+        <div class="product-visual">
+            <img id="p-img" src="" alt="">
+        </div>
+        <div class="product-details">
+            <h1 id="p-title">Carregando...</h1>
+            <div class="product-price" id="p-price"></div>
+            <p class="product-description" id="p-desc"></p>
+            <a href="https://wa.me/5511999219306" class="buy-button" id="whatsapp-link">Encomendar via WhatsApp</a>
+        </div>
+    </main>
+
+    <script>
+        const productData = {
+            'rosa-eterna': {
+                title: 'Rosa Eterna',
+                price: 'R$ 15,00',
+                img: 'flores/flor2.jpeg',
+                desc: 'A Rosa Eterna é moldada individualmente, pétala por pétala, para capturar a beleza fugaz da natureza em uma forma que dura para sempre. É o símbolo perfeito de um afeto que não murcha com o tempo.'
+            },
+            'flor-eterna': {
+                title: 'Flor Eterna',
+                price: 'R$ 20,00',
+                img: 'flores/flor1.jpeg',
+                desc: 'Minimalismo e luxo se encontram nesta peça esculpida à mão. Seu design clean e sofisticado foi pensado para ambientes contemporâneos que buscam um toque de delicadeza eterna.'
+            },
+            'serenata-algodao': {
+                title: 'Serenata de Algodão',
+                price: 'R$ 55,00',
+                img: 'flores/buque azul.jpeg',
+                desc: 'Uma composição artesanal exclusiva que evoca a tranquilidade de uma manhã de céu limpo. Com detalhes em azul bebê e branco que imitam a suavidade do algodão, é a escolha ideal para presentear com ternura e sofisticação.'
+            },
+            'buque-girassol': {
+                title: 'Buquê de Girassol',
+                price: 'R$ 30,00',
+                img: 'flores/Buque girassol.jpeg',
+                desc: 'Uma mistura vibrante e rústica de flores artesanais de campo. Nossos girassóis possuem pétalas texturizadas que capturam a luz, trazendo a energia do sol para dentro de casa em um design rústico-chique.'
+            },
+            'buque-eternity': {
+                title: "Buquê de Luxo 'Eternity'",
+                price: 'R$ 50,00',
+                img: 'flores/Buque roxo.jpeg',
+                desc: 'O topo da nossa linha artesanal. Uma composição densa e luxuosa em tons de violeta e lavanda, projetada para ser o centro das atenções em momentos inesquecíveis que pedem o máximo de elegância.'
+            },
+            'peonia-seda': {
+                title: 'Peônia de Seda',
+                price: 'R$ 15,00',
+                img: 'flores/flor1.jpeg',
+                desc: 'As peônias são conhecidas como a flor da prosperidade. Esta versão em seda artesanal oferece camadas infinitas de delicadeza, mantendo o frescor visual por anos.'
+            },
+            'lirio-cristal': {
+                title: 'Rosa eterna',
+                price: 'R$ 20,00',
+                img: 'flores/flor2.jpeg',
+                desc: 'A clássica rosa vermelha em sua versão mais duradoura. Feita com materiais que simulam a textura do veludo, esta peça é o símbolo máximo do amor e da sofisticação artesanal.'
+            },
+            'rosa-encantada': {
+                title: 'Tulipa encantada',
+                price: 'R$ 15,00',
+                img: 'flores/flor3.jpeg',
+                desc: 'Uma tulipa em tons de rosa suave, perfeita para transmitir ternura e gratidão. Seu design delicado é ideal para presentear alguém especial com um toque de magia.'
+            },
+            'flor-cerejeira': {
+                title: 'Flor de Cerejeira',
+                price: 'R$ 15,00',
+                img: 'flores/flor4.jpeg',
+                desc: 'Representando a renovação e a beleza da vida, este galho de cerejeira artesanal traz a delicadeza e a poesia do oriente para a sua decoração.'
+            },
+            'tulipa-cetim': {
+                title: 'Margarida',
+                price: 'R$ 15,00',
+                img: 'flores/flor5.jpeg',
+                desc: 'A pureza e a simplicidade da margarida branca capturadas em uma forma eterna. Uma flor que traz luz e um ar campestre para a decoração do dia a dia.'
+            },
+            'girassol-veludo': {
+                title: 'Violeta roxa',
+                price: 'R$ 15,00',
+                img: 'flores/Flor6.png',
+                desc: 'Pequena, charmosa e vibrante. Esta violeta roxa artesanal é perfeita para criar pequenos pontos de cor e vida em prateleiras, mesas de cabeceira ou escritórios.'
+            },
+            'margarida-premium': {
+                title: 'Lirio amoroso',
+                price: 'R$ 15,00',
+                img: 'flores/Flor7.png',
+                desc: 'Um lírio expressivo que exala sofisticação. Sua forma elegante e cores equilibradas foram pensadas para transmitir paz e bons sentimentos.'
+            },
+            'orquidea-real': {
+                title: 'Orquídea Real',
+                price: 'R$ 15,00',
+                img: 'flores/flor8.jpeg',
+                desc: 'A rainha das flores em uma reprodução artesanal impecável. Exótica, luxuosa e eterna, é o presente ideal para marcar momentos únicos.'
+            },
+            'arranjo-romance': {
+                title: 'Arranjo Romance',
+                price: 'R$ 60,00',
+                img: 'flores/Buque lirio roko.jpeg',
+                desc: 'A expressão máxima do romantismo em forma de arte. Este arranjo exclusivo combina a nobreza dos lírios em tons de laranja profundo com folhagens delicadas, criando uma composição que transborda elegância e sentimentos intensos.'
+            }
+        };
+
+        // Lógica para carregar o produto baseado no ID da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const product = productData[productId];
+
+        if (product) {
+            document.getElementById('p-title').innerText = product.title;
+            document.getElementById('p-price').innerText = product.price;
+            document.getElementById('p-desc').innerText = product.desc;
+            document.getElementById('p-img').src = product.img;
+            document.getElementById('p-img').alt = product.title;
+            document.title = product.title + " | FLORESCER";
+            
+            // Personaliza o link do WhatsApp
+            const waLink = document.getElementById('whatsapp-link');
+            waLink.href += `?text=Olá! Gostaria de encomendar o produto: ${product.title}`;
+        } else {
+            document.getElementById('product-container').innerHTML = "<h1>Produto não encontrado</h1><p><a href='flores.html'>Voltar ao início</a></p>";
+        }
+    </script>
+</body>
+</html>
