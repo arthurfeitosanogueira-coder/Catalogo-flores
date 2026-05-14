@@ -27,7 +27,17 @@
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .logo { font-size: 1.5rem; color: var(--accent); text-decoration: none; font-weight: bold; letter-spacing: 2px; }
+        .logo { 
+            font-size: 1.5rem; 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-weight: bold; 
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo img { height: 80px; width: auto; }
         .back-link { text-decoration: none; color: var(--text-light); font-size: 0.9rem; }
 
         .container {
@@ -59,12 +69,34 @@
             transition: var(--transition);
         }
         .buy-button:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+
+        /* --- Botão WhatsApp Flutuante --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="404.html" class="logo">FLORESCER</a>
+        <a href="404.html" class="logo">
+            <img src="flores/Florescer.png" alt="Logo Florescer">
+            FLORESCER
+        </a>
         <a href="javascript:history.back()" class="back-link">← Voltar</a>
     </nav>
 
@@ -79,6 +111,10 @@
             <a href="https://wa.me/5511999219306" class="buy-button" id="whatsapp-link">Encomendar via WhatsApp</a>
         </div>
     </main>
+
+    <a href="https://wa.me/5511999219306" class="whatsapp-float" target="_blank">
+        <img src="flores/wats.png" alt="WhatsApp" style="width: 100%; height: 100%; border-radius: 50%;">
+    </a>
 
     <script>
         const productData = {

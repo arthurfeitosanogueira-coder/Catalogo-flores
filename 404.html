@@ -58,6 +58,14 @@
             text-decoration: none;
             letter-spacing: 2px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
         }
 
         .nav-links {
@@ -83,12 +91,20 @@
         /* --- Hero Banner --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, var(--white) 0%, var(--primary-blue) 100%);
+            background: linear-gradient(-45deg, var(--white), var(--secondary-blue), var(--primary-blue), var(--white));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 0 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .hero-content h1 {
@@ -243,7 +259,6 @@
             position: fixed;
             bottom: 40px;
             right: 40px;
-            background-color: #25D366;
             color: white;
             width: 60px;
             height: 60px;
@@ -251,7 +266,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
             box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
             z-index: 1000;
             text-decoration: none;
@@ -308,7 +322,10 @@
 <body>
 
     <nav>
-        <a href="#" class="logo">FLORESCER</a>
+        <a href="#" class="logo">
+            <img src="flores/Florescer.png" alt="Logo Florescer">
+            FLORESCER
+        </a>
         <ul class="nav-links">
             <li><a href="#home">Início</a></li>
             <li><a href="#catalog">Catálogo</a></li>
@@ -339,8 +356,8 @@
                 </div>
                 <div class="product-info">
                     <h3>Rosa eterna</h3>
-                    <p>Arranjo delicado em tons pastéis, ideal para decoração clássica.</p>
-                    <div class="price">R$ 15,00</div>
+                    <p>Ideal para eternizar o seu momento especial em com acabamento clássico</p>
+                    <div class="price">R$ 20,00</div>
                 </div>
             </a>
             <a href="produto.html?id=flor-eterna" class="product-card" style="text-decoration: none; color: inherit;">
@@ -348,9 +365,9 @@
                     <img src="flores/flor1.jpeg" alt="Lírio de Cristal">
                 </div>
                 <div class="product-info">
-                    <h3>Flor eterna</h3>
+                    <h3>Peônia de Seda</h3>
                     <p>Minimalismo e luxo em uma peça única esculpida à mão.</p>
-                    <div class="price">R$ 20,00</div>
+                    <div class="price">R$ 15,00</div>
                 </div>
             </a>
         </div>
@@ -432,7 +449,7 @@
         <div class="footer-col">
             <h4>Redes Sociais</h4>
             <ul>
-                <li>@Eeterno.Florescer</li>
+                <li><a href="https://www.instagram.com/enterno.florescer?igsh=MWM0dXlwdTdremk1eQ==" target="_blank" style="text-decoration: none; color: inherit;">@Eterno.florescer</a></li>
 
             </ul>
         </div>
@@ -446,8 +463,8 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/seunumeroaqui" class="whatsapp-float" target="_blank">
-        <i>W</i>
+    <a href="https://wa.me/5511999219306" class="whatsapp-float" target="_blank">
+        <img src="flores/wats.png" alt="WhatsApp" style="width: 100%; height: 100%; border-radius: 50%;">
     </a>
 
     <script>

@@ -30,7 +30,17 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .logo { font-size: 1.5rem; color: var(--accent); text-decoration: none; letter-spacing: 2px; font-weight: bold; }
+        .logo { 
+            font-size: 1.5rem; 
+            color: var(--accent); 
+            text-decoration: none; 
+            letter-spacing: 2px; 
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo img { height: 80px; width: auto; }
         
         .back-link {
             text-decoration: none;
@@ -76,6 +86,25 @@
         .product-info { padding: 20px; text-align: center; }
         .price { font-weight: 600; color: var(--accent); margin-top: 10px; }
 
+        /* --- Botão WhatsApp Flutuante --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
         footer { padding: 60px 10%; background: var(--secondary-blue); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-top: 50px; }
         .footer-col h4 { margin-bottom: 20px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
         .footer-col ul { list-style: none; color: var(--text-light); }
@@ -84,7 +113,10 @@
 <body>
 
     <nav>
-        <a href="404.html" class="logo">FLORESCER</a>
+        <a href="404.html" class="logo">
+            <img src="flores/Florescer.png" alt="Logo Florescer">
+            FLORESCER
+        </a>
         <a href="404.html" class="back-link">← Voltar para Início</a>
     </nav>
 
@@ -191,11 +223,15 @@
         <div class="footer-col">
             <h4>Contato</h4>
             <ul>
-                <li>@Eterno.florescer</li>
+                <li><a href="https://www.instagram.com/enterno.florescer?igsh=MWM0dXlwdTdremk1eQ==" target="_blank" style="text-decoration: none; color: inherit;">@Eterno.florescer</a></li>
                 <li>Bragança Paulista, SP</li>
             </ul>
         </div>
     </footer>
+
+    <a href="https://wa.me/5511999219306" class="whatsapp-float" target="_blank">
+        <img src="flores/wats.png" alt="WhatsApp" style="width: 100%; height: 100%; border-radius: 50%;">
+    </a>
 
 </body>
 </html>
